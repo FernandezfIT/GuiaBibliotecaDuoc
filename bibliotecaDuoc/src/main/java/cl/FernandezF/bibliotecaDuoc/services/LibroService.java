@@ -1,0 +1,37 @@
+package cl.FernandezF.bibliotecaDuoc.services;
+
+import cl.FernandezF.bibliotecaDuoc.repository.LibroRepository;
+import cl.FernandezF.bibliotecaDuoc.model.Libro;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import java.util.List;
+
+@Service
+public class LibroService {
+    @Autowired
+    private LibroRepository libroRepository;
+
+    public List<Libro> getLibros() {
+        return libroRepository.obteneLibros();
+    }
+
+    public Libro guardaLibro(Libro libro) {
+        return libroRepository.guardar(libro);
+    }
+
+    public Libro getLibroId(int id) {
+        return libroRepository.buscarPorId(id);
+    }
+
+    public Libro updateLibro(Libro libro){
+        return libroRepository.actualizar(libro);
+    }
+
+    public String borrarLibro(int id){
+        libroRepository.eliminar(id);
+        return "Producto Eliminado";
+    }
+
+    
+}
